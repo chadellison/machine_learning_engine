@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416062048) do
+ActiveRecord::Schema.define(version: 20170416192318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 20170416062048) do
   end
 
   create_table "next_moves", force: :cascade do |t|
-    t.integer  "rank"
     t.integer  "board_setup_id"
     t.string   "position"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "value"
+    t.integer  "rank",           default: 0
   end
 
 end
