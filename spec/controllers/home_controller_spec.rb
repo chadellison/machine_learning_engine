@@ -7,4 +7,9 @@ RSpec.describe HomeController, type: :controller do
       expect(response.status).to eq 200
     end
   end
+
+  describe "create" do
+    xit "test" do
+    end
+  end
 end
