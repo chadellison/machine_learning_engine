@@ -1,7 +1,6 @@
 class Engine
-  # def train(number)
-  # number = 1000 if number > 1000
-  #   number.times do
+  # def train
+  #   1000.times do
   #     play_self
   #   end
   # end
@@ -19,11 +18,11 @@ class Engine
   # end
   #
   # def new_game(game)
-  #   game.board_setups.find_or_create_by(blank_board)
+  #   game.board_setups.find_or_create_by(BoardSetup.new.positions)
   # end
   #
   # def make_move(board_setup)
-  #   rank = board_setup.next_moves.max_by(&:rank)
+  #   rank = board_setup.next_moves.max_by(&:rank).rank
   #   next_move = board_setup.next_moves.where(rank: rank).sample
   #   board_setup.update(chosen_move_id: next_move.id)
   #   new_setup = BoardSetup.find_or_create_by(next_move.position.to_sym => next_move.value)
@@ -32,10 +31,5 @@ class Engine
   #
   # def game_over?(board_setup)
   #   board_setup.positions_full? || board_setup.winning_combo?
-  # end
-  #
-  # def blank_board
-  #   { a1: nil, a2: nil, a3: nil, b1: nil, b2: nil, b3: nil, c1: nil, c2: nil,
-  #     c3: nil }
   # end
 end
