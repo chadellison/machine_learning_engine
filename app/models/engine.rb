@@ -18,7 +18,9 @@ class Engine
   end
 
   def new_game(game)
-    game.board_setups.find_or_create_by(BoardSetup.new.positions)
+    board_setup = BoardSetup.find_or_create_by(BoardSetup.new.positions)
+    game.board_setups << board_setup
+    board_setup
   end
 
   def make_move(board_setup)
