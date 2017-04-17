@@ -10,7 +10,7 @@ class Engine
     board_setup = new_game(game)
 
     until game_over?(board_setup) do
-      board_setup = make_move(board_setup)
+      board_setup = make_move(board_setup, game)
     end
 
     winner = board_setup.find_winner
@@ -23,13 +23,14 @@ class Engine
     board_setup
   end
 
-  def make_move(board_setup)
+  def make_move(board_setup, game)
     rank = board_setup.next_moves.max_by(&:rank).rank
 
     next_move = board_setup.next_moves.where(rank: rank).sample
     board_setup.update(chosen_move_id: next_move.id)
 
     new_setup = BoardSetup.find_or_create_by(new_positions(board_setup, next_move))
+    game.board_setups << new_setup
     new_setup
   end
 

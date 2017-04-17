@@ -44,11 +44,12 @@ describe Engine do
 
   describe "make_move" do
     let(:engine) { Engine.new }
+    let(:game) { Game.create }
 
     it "returns a new board_setup with all of the previous positions plus one" do
-      board_setup = BoardSetup.create(a1: "x", b1: "o", c1: "x")
+      board_setup = game.board_setups.create(a1: "x", b1: "o", c1: "x")
 
-      result = engine.make_move(board_setup)
+      result = engine.make_move(board_setup, game)
 
       expect(result.find_current_positions[:a1]).to eq "x"
       expect(result.find_current_positions[:b1]).to eq "o"
